@@ -1,0 +1,674 @@
+<HTML>
+<HEAD>
+<TITLE>
+My first web page 
+</TITLE>dfufuofuufu8dfidufdg9geood
+</HEAD>
+</HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naya Calculator - Your Money. Your Confidence.</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Naya Calculator */
+        :root {
+            --deep-blue: #003366;
+            --emerald-green: #2E7D32;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light background for the page */
+            color: #333;
+        }
+
+        /* Header styling */
+        .header {
+            background-color: var(--deep-blue);
+            color: var(--white);
+            padding: 1.5rem 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation styling */
+        .nav-button {
+            background-color: var(--emerald-green);
+            color: var(--white);
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button:hover {
+            background-color: #256d29; /* Darker emerald green on hover */
+            transform: translateY(-2px);
+        }
+
+        .nav-button.active {
+            background-color: var(--deep-blue); /* Active button uses deep blue */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Calculator card styling */
+        .calculator-card {
+            background-color: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .calculator-card h2 {
+            font-size: 2rem;
+            color: var(--deep-blue);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* Input and button styling within calculators */
+        .input-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+
+        .input-group input[type="number"],
+        .input-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+
+        .input-group input[type="number"]:focus,
+        .input-group select:focus {
+            border-color: var(--emerald-green);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+        }
+
+        .calculate-button {
+            background-color: var(--deep-blue);
+            color: var(--white);
+            padding: 0.85rem 1.75rem;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculate-button:hover {
+            background-color: #002244; /* Darker deep blue on hover */
+            transform: translateY(-2px);
+        }
+
+        /* Results display */
+        .results {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .results h3 {
+            font-size: 1.5rem;
+            color: var(--emerald-green);
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .results p {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #edf2f7;
+        }
+
+        .results p:last-child {
+            border-bottom: none;
+        }
+
+        .results p strong {
+            color: var(--deep-blue);
+            font-weight: 700;
+        }
+
+        .error-message {
+            color: #dc2626; /* Red for errors */
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: var(--deep-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header p {
+                font-size: 0.9rem;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+            .calculator-card {
+                padding: 1.5rem;
+                margin: 1.5rem 1rem;
+            }
+            .calculator-card h2 {
+                font-size: 1.75rem;
+            }
+            .calculate-button {
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header text-center">
+        <h1 class="text-white">Naya Calculator</h1>
+        <p class="text-white opacity-90">Your Money. Your Confidence.</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white py-4 shadow-md">
+        <div class="container mx-auto flex flex-wrap justify-center gap-4 px-4 nav-container">
+            <button class="nav-button active" data-calculator="sip">SIP Calculator</button>
+            <button class="nav-button" data-calculator="fd">FD Calculator</button>
+            <button class="nav-button" data-calculator="emi">EMI Calculator</button>
+            <button class="nav-button" data-calculator="capital-gain">Capital Gain Tax</button>
+            <button class="nav-button" data-calculator="mutual-funds">Mutual Funds Return</button>
+            <!-- Add more calculator buttons here as needed -->
+        </div>
+    </nav>
+
+    <!-- Main Content Area for Calculators -->
+    <main id="calculator-container" class="container mx-auto px-4 py-8">
+        <!-- Calculator content will be loaded here by JavaScript -->
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2024 Naya Calculator. All rights reserved.</p>
+        <p>Disclaimer: This calculator provides estimates based on inputs. Consult a financial advisor for personalized advice.</p>
+    </footer>
+
+    <script>
+        // Function to format numbers as currency (Indian Rupees)
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 2
+            }).format(value);
+        }
+
+        // Function to format numbers as percentage
+        function formatPercentage(value) {
+            return new Intl.NumberFormat('en-IN', {
+                style: 'percent',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 2
+            }).format(value / 100);
+        }
+
+        // --- Calculator Templates ---
+
+        const sipCalculatorTemplate = `
+            <div class="calculator-card">
+                <h2>SIP Calculator</h2>
+                <div class="input-group">
+                    <label for="sip-monthly-investment">Monthly Investment (₹)</label>
+                    <input type="number" id="sip-monthly-investment" value="5000" min="100">
+                </div>
+                <div class="input-group">
+                    <label for="sip-return-rate">Expected Return Rate (Annual %)</label>
+                    <input type="number" id="sip-return-rate" value="12" min="0.1" max="50" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="sip-time-period">Time Period (Years)</label>
+                    <input type="number" id="sip-time-period" value="10" min="1" max="50">
+                </div>
+                <button class="calculate-button" onclick="calculateSIP()">Calculate SIP</button>
+                <div id="sip-results" class="results hidden">
+                    <h3>Results</h3>
+                    <p>Total Investment: <strong id="sip-total-investment"></strong></p>
+                    <p>Estimated Returns: <strong id="sip-estimated-returns"></strong></p>
+                    <p>Maturity Value: <strong id="sip-maturity-value"></strong></p>
+                </div>
+                <p id="sip-error" class="error-message hidden"></p>
+            </div>
+        `;
+
+        const fdCalculatorTemplate = `
+            <div class="calculator-card">
+                <h2>FD Calculator</h2>
+                <div class="input-group">
+                    <label for="fd-principal-amount">Principal Amount (₹)</label>
+                    <input type="number" id="fd-principal-amount" value="100000" min="1000">
+                </div>
+                <div class="input-group">
+                    <label for="fd-interest-rate">Annual Interest Rate (%)</label>
+                    <input type="number" id="fd-interest-rate" value="7" min="0.1" max="20" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="fd-time-period">Time Period</label>
+                    <div class="flex gap-2">
+                        <input type="number" id="fd-time-value" value="5" min="1">
+                        <select id="fd-time-unit" class="flex-grow">
+                            <option value="years">Years</option>
+                            <option value="months">Months</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="fd-compounding-frequency">Compounding Frequency</label>
+                    <select id="fd-compounding-frequency">
+                        <option value="12">Monthly</option>
+                        <option value="4">Quarterly</option>
+                        <option value="2">Half-Yearly</option>
+                        <option value="1">Yearly</option>
+                    </select>
+                </div>
+                <button class="calculate-button" onclick="calculateFD()">Calculate FD</button>
+                <div id="fd-results" class="results hidden">
+                    <h3>Results</h3>
+                    <p>Maturity Amount: <strong id="fd-maturity-amount"></strong></p>
+                    <p>Total Interest Earned: <strong id="fd-total-interest"></strong></p>
+                </div>
+                <p id="fd-error" class="error-message hidden"></p>
+            </div>
+        `;
+
+        const emiCalculatorTemplate = `
+            <div class="calculator-card">
+                <h2>EMI Calculator</h2>
+                <div class="input-group">
+                    <label for="emi-loan-amount">Loan Amount (₹)</label>
+                    <input type="number" id="emi-loan-amount" value="500000" min="1000">
+                </div>
+                <div class="input-group">
+                    <label for="emi-interest-rate">Annual Interest Rate (%)</label>
+                    <input type="number" id="emi-interest-rate" value="10" min="0.1" max="30" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="emi-loan-tenure">Loan Tenure</label>
+                    <div class="flex gap-2">
+                        <input type="number" id="emi-loan-tenure-value" value="5" min="1">
+                        <select id="emi-loan-tenure-unit" class="flex-grow">
+                            <option value="years">Years</option>
+                            <option value="months">Months</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="calculate-button" onclick="calculateEMI()">Calculate EMI</button>
+                <div id="emi-results" class="results hidden">
+                    <h3>Results</h3>
+                    <p>Monthly EMI: <strong id="emi-monthly-emi"></strong></p>
+                    <p>Total Interest Payable: <strong id="emi-total-interest"></strong></p>
+                    <p>Total Payment: <strong id="emi-total-payment"></strong></p>
+                </div>
+                <p id="emi-error" class="error-message hidden"></p>
+            </div>
+        `;
+
+        const capitalGainTaxCalculatorTemplate = `
+            <div class="calculator-card">
+                <h2>Capital Gain Tax Calculator</h2>
+                <p class="text-sm text-gray-600 mb-4 text-center">
+                    This calculator provides a simplified estimate of capital gain. Actual tax liability depends on local tax laws, indexation benefits, and other factors.
+                </p>
+                <div class="input-group">
+                    <label for="cg-sale-price">Sale Price (₹)</label>
+                    <input type="number" id="cg-sale-price" value="1500000" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="cg-purchase-price">Purchase Price (₹)</label>
+                    <input type="number" id="cg-purchase-price" value="1000000" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="cg-purchase-date">Date of Purchase</label>
+                    <input type="date" id="cg-purchase-date">
+                </div>
+                <div class="input-group">
+                    <label for="cg-sale-date">Date of Sale</label>
+                    <input type="date" id="cg-sale-date">
+                </div>
+                <button class="calculate-button" onclick="calculateCapitalGain()">Calculate Capital Gain</button>
+                <div id="cg-results" class="results hidden">
+                    <h3>Results</h3>
+                    <p>Capital Gain Type: <strong id="cg-gain-type"></strong></p>
+                    <p>Total Capital Gain: <strong id="cg-total-gain"></strong></p>
+                    <p>Holding Period: <strong id="cg-holding-period"></strong></p>
+                </div>
+                <p id="cg-error" class="error-message hidden"></p>
+            </div>
+        `;
+
+        const mutualFundsReturnCalculatorTemplate = `
+            <div class="calculator-card">
+                <h2>Mutual Funds Return Calculator</h2>
+                <div class="input-group">
+                    <label for="mf-initial-investment">Initial Investment (₹)</label>
+                    <input type="number" id="mf-initial-investment" value="100000" min="100">
+                </div>
+                <div class="input-group">
+                    <label for="mf-current-value">Current Value (₹)</label>
+                    <input type="number" id="mf-current-value" value="150000" min="100">
+                </div>
+                <div class="input-group">
+                    <label for="mf-time-period">Time Period (Years)</label>
+                    <input type="number" id="mf-time-period" value="5" min="0.1" step="0.1">
+                </div>
+                <button class="calculate-button" onclick="calculateMutualFundsReturn()">Calculate Return</button>
+                <div id="mf-results" class="results hidden">
+                    <h3>Results</h3>
+                    <p>Absolute Return: <strong id="mf-absolute-return"></strong></p>
+                    <p>CAGR (Compound Annual Growth Rate): <strong id="mf-cagr"></strong></p>
+                </div>
+                <p id="mf-error" class="error-message hidden"></p>
+            </div>
+        `;
+
+        // --- Calculator Logic Functions ---
+
+        function displayResults(resultsDivId, errorDivId, show) {
+            document.getElementById(resultsDivId).classList.toggle('hidden', !show);
+            document.getElementById(errorDivId).classList.toggle('hidden', show);
+            if (!show) {
+                document.getElementById(errorDivId).textContent = '';
+            }
+        }
+
+        function showError(errorDivId, message) {
+            document.getElementById(errorDivId).textContent = message;
+            document.getElementById(errorDivId).classList.remove('hidden');
+            // Hide results if an error occurs
+            const resultsDivId = errorDivId.replace('-error', '-results');
+            document.getElementById(resultsDivId).classList.add('hidden');
+        }
+
+        function calculateSIP() {
+            const monthlyInvestment = parseFloat(document.getElementById('sip-monthly-investment').value);
+            const annualReturnRate = parseFloat(document.getElementById('sip-return-rate').value);
+            const timePeriodYears = parseFloat(document.getElementById('sip-time-period').value);
+
+            if (isNaN(monthlyInvestment) || isNaN(annualReturnRate) || isNaN(timePeriodYears) ||
+                monthlyInvestment <= 0 || annualReturnRate < 0 || timePeriodYears <= 0) {
+                showError('sip-error', 'Please enter valid positive numbers for all fields.');
+                return;
+            }
+
+            const monthlyRate = (annualReturnRate / 100) / 12;
+            const numberOfPayments = timePeriodYears * 12;
+
+            let maturityValue = 0;
+            if (monthlyRate === 0) {
+                // Simple calculation if interest rate is 0
+                maturityValue = monthlyInvestment * numberOfPayments;
+            } else {
+                maturityValue = monthlyInvestment * ((Math.pow(1 + monthlyRate, numberOfPayments) - 1) / monthlyRate) * (1 + monthlyRate);
+            }
+
+            const totalInvestment = monthlyInvestment * numberOfPayments;
+            const estimatedReturns = maturityValue - totalInvestment;
+
+            document.getElementById('sip-total-investment').textContent = formatCurrency(totalInvestment);
+            document.getElementById('sip-estimated-returns').textContent = formatCurrency(estimatedReturns);
+            document.getElementById('sip-maturity-value').textContent = formatCurrency(maturityValue);
+
+            displayResults('sip-results', 'sip-error', true);
+        }
+
+        function calculateFD() {
+            const principalAmount = parseFloat(document.getElementById('fd-principal-amount').value);
+            const annualInterestRate = parseFloat(document.getElementById('fd-interest-rate').value);
+            const timeValue = parseFloat(document.getElementById('fd-time-value').value);
+            const timeUnit = document.getElementById('fd-time-unit').value;
+            const compoundingFrequency = parseInt(document.getElementById('fd-compounding-frequency').value);
+
+            if (isNaN(principalAmount) || isNaN(annualInterestRate) || isNaN(timeValue) ||
+                principalAmount <= 0 || annualInterestRate < 0 || timeValue <= 0) {
+                showError('fd-error', 'Please enter valid positive numbers for all fields.');
+                return;
+            }
+
+            let timePeriodYears;
+            if (timeUnit === 'months') {
+                timePeriodYears = timeValue / 12;
+            } else {
+                timePeriodYears = timeValue;
+            }
+
+            const rateDecimal = annualInterestRate / 100;
+            const maturityAmount = principalAmount * Math.pow((1 + (rateDecimal / compoundingFrequency)), (compoundingFrequency * timePeriodYears));
+            const totalInterest = maturityAmount - principalAmount;
+
+            document.getElementById('fd-maturity-amount').textContent = formatCurrency(maturityAmount);
+            document.getElementById('fd-total-interest').textContent = formatCurrency(totalInterest);
+
+            displayResults('fd-results', 'fd-error', true);
+        }
+
+        function calculateEMI() {
+            const loanAmount = parseFloat(document.getElementById('emi-loan-amount').value);
+            const annualInterestRate = parseFloat(document.getElementById('emi-interest-rate').value);
+            const loanTenureValue = parseFloat(document.getElementById('emi-loan-tenure-value').value);
+            const loanTenureUnit = document.getElementById('emi-loan-tenure-unit').value;
+
+            if (isNaN(loanAmount) || isNaN(annualInterestRate) || isNaN(loanTenureValue) ||
+                loanAmount <= 0 || annualInterestRate < 0 || loanTenureValue <= 0) {
+                showError('emi-error', 'Please enter valid positive numbers for all fields.');
+                return;
+            }
+
+            let loanTenureMonths;
+            if (loanTenureUnit === 'years') {
+                loanTenureMonths = loanTenureValue * 12;
+            } else {
+                loanTenureMonths = loanTenureValue;
+            }
+
+            const monthlyInterestRate = (annualInterestRate / 100) / 12;
+
+            let emi;
+            if (monthlyInterestRate === 0) {
+                emi = loanAmount / loanTenureMonths;
+            } else {
+                emi = loanAmount * monthlyInterestRate * (Math.pow(1 + monthlyInterestRate, loanTenureMonths)) / (Math.pow(1 + monthlyInterestRate, loanTenureMonths) - 1);
+            }
+
+            const totalPayment = emi * loanTenureMonths;
+            const totalInterestPayable = totalPayment - loanAmount;
+
+            document.getElementById('emi-monthly-emi').textContent = formatCurrency(emi);
+            document.getElementById('emi-total-interest').textContent = formatCurrency(totalInterestPayable);
+            document.getElementById('emi-total-payment').textContent = formatCurrency(totalPayment);
+
+            displayResults('emi-results', 'emi-error', true);
+        }
+
+        function calculateCapitalGain() {
+            const salePrice = parseFloat(document.getElementById('cg-sale-price').value);
+            const purchasePrice = parseFloat(document.getElementById('cg-purchase-price').value);
+            const purchaseDateStr = document.getElementById('cg-purchase-date').value;
+            const saleDateStr = document.getElementById('cg-sale-date').value;
+
+            if (isNaN(salePrice) || isNaN(purchasePrice) || salePrice < 0 || purchasePrice < 0) {
+                showError('cg-error', 'Please enter valid non-negative numbers for prices.');
+                return;
+            }
+            if (!purchaseDateStr || !saleDateStr) {
+                showError('cg-error', 'Please select both purchase and sale dates.');
+                return;
+            }
+
+            const purchaseDate = new Date(purchaseDateStr);
+            const saleDate = new Date(saleDateStr);
+
+            if (saleDate < purchaseDate) {
+                showError('cg-error', 'Sale date cannot be before purchase date.');
+                return;
+            }
+
+            const capitalGain = salePrice - purchasePrice;
+            let gainType = 'N/A';
+            let holdingPeriod = 'N/A';
+
+            // Calculate holding period in months
+            const diffTime = Math.abs(saleDate.getTime() - purchaseDate.getTime());
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            const diffYears = diffDays / 365.25; // Approximate years
+
+            if (diffYears < 1) { // Simplified: Less than 1 year for short term
+                gainType = 'Short Term Capital Gain';
+            } else {
+                gainType = 'Long Term Capital Gain';
+            }
+
+            // Format holding period
+            if (diffYears < 1) {
+                holdingPeriod = `${Math.round(diffDays)} days`;
+            } else if (diffYears < 2) {
+                holdingPeriod = `${diffYears.toFixed(1)} year`;
+            } else {
+                holdingPeriod = `${diffYears.toFixed(1)} years`;
+            }
+
+
+            document.getElementById('cg-gain-type').textContent = gainType;
+            document.getElementById('cg-total-gain').textContent = formatCurrency(capitalGain);
+            document.getElementById('cg-holding-period').textContent = holdingPeriod;
+
+            displayResults('cg-results', 'cg-error', true);
+        }
+
+        function calculateMutualFundsReturn() {
+            const initialInvestment = parseFloat(document.getElementById('mf-initial-investment').value);
+            const currentValue = parseFloat(document.getElementById('mf-current-value').value);
+            const timePeriodYears = parseFloat(document.getElementById('mf-time-period').value);
+
+            if (isNaN(initialInvestment) || isNaN(currentValue) || isNaN(timePeriodYears) ||
+                initialInvestment <= 0 || currentValue <= 0 || timePeriodYears <= 0) {
+                showError('mf-error', 'Please enter valid positive numbers for all fields.');
+                return;
+            }
+
+            const absoluteReturn = ((currentValue - initialInvestment) / initialInvestment) * 100;
+
+            let cagr = 0;
+            if (initialInvestment > 0 && timePeriodYears > 0) {
+                cagr = (Math.pow((currentValue / initialInvestment), (1 / timePeriodYears)) - 1) * 100;
+            }
+
+            document.getElementById('mf-absolute-return').textContent = formatPercentage(absoluteReturn);
+            document.getElementById('mf-cagr').textContent = formatPercentage(cagr);
+
+            displayResults('mf-results', 'mf-error', true);
+        }
+
+        // --- UI Management ---
+
+        const calculatorContainer = document.getElementById('calculator-container');
+        const navButtons = document.querySelectorAll('.nav-button');
+
+        function loadCalculator(calculatorType) {
+            let template = '';
+            switch (calculatorType) {
+                case 'sip':
+                    template = sipCalculatorTemplate;
+                    break;
+                case 'fd':
+                    template = fdCalculatorTemplate;
+                    break;
+                case 'emi':
+                    template = emiCalculatorTemplate;
+                    break;
+                case 'capital-gain':
+                    template = capitalGainTaxCalculatorTemplate;
+                    break;
+                case 'mutual-funds':
+                    template = mutualFundsReturnCalculatorTemplate;
+                    break;
+                default:
+                    template = '<p class="text-center text-gray-600">Select a calculator from the navigation above.</p>';
+            }
+            calculatorContainer.innerHTML = template;
+
+            // Update active state of navigation buttons
+            navButtons.forEach(button => {
+                if (button.dataset.calculator === calculatorType) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        // Event listeners for navigation buttons
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                loadCalculator(button.dataset.calculator);
+            });
+        });
+
+        // Load the default calculator on page load (SIP Calculator)
+        window.onload = function() {
+            loadCalculator('sip');
+        };
+
+    </script>
+</body>
+</html>
